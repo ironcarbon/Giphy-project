@@ -1,9 +1,14 @@
 import React, { Fragment } from 'react';
+import Logo from '../logo/Logo';
+import SearchBar from '../searchBar/SearchBar';
+import TrendingGif from '../trendingGif/TrendingGif';
 
 const Landing = () => {
     return (
         <Fragment>
-            <p>Landing</p>
+            <Logo />
+            <SearchBar />
+            <TrendingGif />
         </Fragment>
     )
 }

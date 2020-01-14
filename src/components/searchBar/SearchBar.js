@@ -11,7 +11,7 @@ class SearchBar extends React.Component {
     formHandler = (e) => {
         e.preventDefault();
         if (!this.state.searchedKeyword) {
-            this.setState({ error: 'Please search a giph' })
+            this.setState({ error: 'Please search a gif' })
         } else {
             console.log(this.props.history.push({
                 pathname: `/search/${this.state.searchedKeyword}`,

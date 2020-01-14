@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Landing from './components/landing/Landing';
+import SearchResults from './components/searchResults/SearchResults';
 
-function App() {
+
+const App = () => {
   return (
-    <div>
-      Hello World!
-    </div>
+    <Router>
+      <Fragment>
+        <Route exact path="/" component={Landing} />
+        <Switch>
+          <Route path="/search/:id" component={SearchResults} />
+        </Switch>
+      </Fragment>
+    </Router>
+
   );
 }
 

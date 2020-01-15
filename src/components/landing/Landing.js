@@ -8,7 +8,8 @@ const Landing = () => {
         <Fragment>
             <Logo />
             <SearchBar />
-            <TrendingGif />
+            {/* <TrendingGif />  */}
+            {/* We can implement TrendingGif Component in the future */}
         </Fragment>
     )
 }

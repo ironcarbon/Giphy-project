@@ -1,3 +1,7 @@
+.mainContainer{
+    max-width: 1050px;
+    margin: 0 auto;
+}
 .mainContainer p{
     text-align: center;
     font-size: 20px;
@@ -8,4 +12,5 @@
 .wrapped{
     display: flex;
     justify-content: center;
+
 }

@@ -1,6 +1,8 @@
 import React from 'react';
 import styles from './Trending.module.css';
 import { giphyApiTrendingRequest } from '../../utils/api';
+import Loading from '../loading/Loading';
+
 
 
 
@@ -29,7 +31,7 @@ class TrendingGif extends React.Component {
             <div className={styles.mainContainer}>
                 <p>Trending Gifs</p>
                 <div className={styles.wrapped}>
-                    {!this.state.trendingGif && this.state.loading ? "Loading" : this.displayHandler()}
+                    {!this.state.trendingGif && this.state.loading ? <Loading /> : this.displayHandler()}
                 </div>
             </div>
         )

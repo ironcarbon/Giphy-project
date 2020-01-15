@@ -1,11 +1,12 @@
 import React from 'react';
 import styles from './Logo.module.css';
+import logo from './logo.png';
 
 
 const Logo = () => {
     return (
-        <div>
-            <h1>National Gif Relief</h1>
+        <div className={styles.logo}>
+            <img src={logo} alt="logo" />
         </div>
     )
 }

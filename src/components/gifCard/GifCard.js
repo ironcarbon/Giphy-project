@@ -1,5 +1,8 @@
 import React, { Fragment } from 'react';
 import styles from './GifCard.module.css';
+import Loading from '../loading/Loading';
+import spinner from './spinner.gif';
+
 
 class GifCard extends React.Component {
     constructor(props) {
@@ -11,42 +14,64 @@ class GifCard extends React.Component {
 
     componentDidMount() {
 
-        this.loadingBox.current.style.width =
-            this.props.image.fixed_height.width + "px";
+        this.loadingBox.current.style.height =
+            this.props.image.fixed_width.height + "px";
         this.imageRef.current.addEventListener("load", this.setSpans);
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.gif.id !== prevProps.gif.id) {
+            this.setState({ imageStatus: false });
+            this.loadingBox.current.style.height =
+                this.props.image.fixed_width.height + "px";
+            this.imageRef.current.addEventListener("load", this.setSpans);
+        }
     }
 
     setSpans = () => {
 
-        this.imageRef.current.style.width = this.props.image.fixed_height.width;
+        // this.imageRef.current.style.width = this.props.image.fixed_height.width;
 
         this.setState({ imageStatus: true });
     };
 
 
     render() {
-        return (
-            !this.props.image.fixed_width.url ? "loading" : (
+        // console.log(this.loadingBox.current)
+        return !this.props.image.fixed_width.url ? (
+            <Loading />
+        ) : (
                 <Fragment>
                     <div
                         ref={this.loadingBox}
+                        // key={this.props.gif.id}
                         className={
                             this.state.imageStatus
                                 ? `${styles.itemHide}`
                                 : `${styles.masonryBrick}`
                         }
-                    ></div>
-
+                    >
+                        <img
+                            src={spinner}
+                            className={
+                                this.state.imageStatus
+                                    ? `${styles.itemHide}`
+                                    : `${styles.spinner}`
+                            }
+                        ></img>
+                    </div>
 
                     <img
-                        src={this.props.image.fixed_height.url}
-                        style={this.state.imageStatus ? {} : { display: "none" }}
+                        src={this.props.image.fixed_width.url}
+                        // style={this.state.imageStatus ? {} : { display: "none" }}
                         ref={this.imageRef}
-                        className={styles.masonryBrick}
+                        className={
+                            this.state.imageStatus ? styles.masonryBrick : styles.itemHide
+                        }
+                        key={this.props.gif.id}
                     ></img>
                 </Fragment>
-            )
-        )
+            );
     }
 }
 

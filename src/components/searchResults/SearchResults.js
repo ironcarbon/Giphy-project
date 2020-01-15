@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import { giphyApiSearchRequest } from '../../utils/api';
+import GifCard from '../gifCard/GifCard';
 
 
 class SearchResults extends React.Component {
@@ -23,6 +24,15 @@ class SearchResults extends React.Component {
         return (
             <Fragment>
                 {this.state.loading ? "Loading" : <div>Done</div>}
+                {!this.state.searchResult && this.state.loading ? "Loading" :
+                    this.state.searchResult.map(result => {
+                        if (result.images) {
+                            return <GifCard key={result.id} image={result.images} />
+                        } else {
+                            return <div>"loading"</div>
+                        }
+                    })
+                }
             </Fragment>
         )
     }

@@ -5,6 +5,7 @@ import styles from "./SearchResults.module.css";
 import SearchBar from "../searchBar/SearchBar";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Loading from '../loading/Loading';
+import NoResult from '../noResult/NoResult';
 
 class SearchResults extends React.Component {
     constructor(props) {
@@ -13,7 +14,7 @@ class SearchResults extends React.Component {
             searchResult: null,
             loading: <Loading />,
             allGifs: [],
-            count: 30,
+            count: 50,
             start: 1
         };
     }
@@ -83,19 +84,24 @@ class SearchResults extends React.Component {
                 {!this.state.searchResult && this.state.loading ? (
                     <Loading />
                 ) : (
-                        <div className={styles.container}>
-                            <div className={styles.masonry}>
-                                <InfiniteScroll
-                                    dataLength={this.state.searchResult.length}
-                                    next={this.fetchGifs}
-                                    hasMore={true}
-                                    loader={<Loading />}
-                                >
-                                    {this.displayHandler(this.state.searchResult)}
-                                </InfiniteScroll>
-                            </div>
-                        </div>
+                        <Fragment>
+                            {this.state.searchResult.length < 1 ? <NoResult /> :
+                                <div className={styles.container}>
+                                    <div className={styles.masonry}>
+                                        <InfiniteScroll
+                                            dataLength={this.state.searchResult.length}
+                                            next={this.fetchGifs}
+                                            hasMore={true}
+                                            loader={<Loading />}
+                                        >
+                                            {this.displayHandler(this.state.searchResult)}
+                                        </InfiniteScroll>
+                                    </div>
+                                </div>
+                            }
+                        </Fragment>
                     )}
+
             </Fragment>
         );
     }

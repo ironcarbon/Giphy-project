@@ -1,0 +1,11 @@
+.mainContainer p{
+    text-align: center;
+    font-size: 20px;
+    color: var(--white);
+    margin-bottom: 10px;
+}
+
+.wrapped{
+    display: flex;
+    justify-content: center;
+}

@@ -37,10 +37,7 @@ class SearchBar extends React.Component {
                     <form className={styles.form} onSubmit={this.formHandler}>
                         <div className={styles.formContainer}>
                             <input type="text" className={styles.search} onChange={this.inputHandler} placeholder='Search a Gif' required />
-                            {/* <button type="submit" className={styles.submit}> */}
                             <img src={search} alt="search" className={styles.image} onClick={this.formHandler} />
-                            {/* </button> */}
-
                         </div>
                     </form>
                 </div>

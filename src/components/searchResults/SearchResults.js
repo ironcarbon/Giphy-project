@@ -9,7 +9,6 @@ import Loading from '../loading/Loading';
 class SearchResults extends React.Component {
     constructor(props) {
         super(props);
-        // this.state = { searchResult: null, loading: true };
         this.state = {
             searchResult: null,
             loading: <Loading />,
@@ -39,8 +38,6 @@ class SearchResults extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        // console.log(this.props.location.state.searchedKeyword);
-        // console.log(prevProps.location.state.searchedKeyword)
         if (
             this.props.location.state.searchedKeyword !==
             prevProps.location.state.searchedKeyword

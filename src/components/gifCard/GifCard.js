@@ -13,7 +13,6 @@ class GifCard extends React.Component {
     }
 
     componentDidMount() {
-
         this.loadingBox.current.style.height =
             this.props.image.fixed_width.height + "px";
         this.imageRef.current.addEventListener("load", this.setSpans);
@@ -29,15 +28,11 @@ class GifCard extends React.Component {
     }
 
     setSpans = () => {
-
-        // this.imageRef.current.style.width = this.props.image.fixed_height.width;
-
         this.setState({ imageStatus: true });
     };
 
 
     render() {
-        // console.log(this.loadingBox.current)
         return !this.props.image.fixed_width.url ? (
             <Loading />
         ) : (
@@ -63,7 +58,6 @@ class GifCard extends React.Component {
 
                     <img
                         src={this.props.image.fixed_width.url}
-                        // style={this.state.imageStatus ? {} : { display: "none" }}
                         ref={this.imageRef}
                         className={
                             this.state.imageStatus ? styles.masonryBrick : styles.itemHide

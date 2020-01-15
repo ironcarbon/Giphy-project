@@ -1,5 +1,5 @@
 :root{
-      /* background-color: var(--very-dark-gray); */
+      background-color: var(--very-dark-gray);
       color: var(--sandstone);
       font-size: 18px;
       height: 100vh;
@@ -10,8 +10,8 @@
       --light-gray: #999999;
       --very-light-gray: #f8f8f2;
       --blue: #4c5a83;
-      
       --soft-cyan: #66d9ef;
+      --cyan: #8be9fd;
       --green: #50fa7b;
       --orange: #ffb86c;
       --pink: #ff79c6;
@@ -22,7 +22,7 @@
       --lace: #f8f8f0;
       --white: #ffffff;
   }
-
+  
   *{
       margin: 0;
       padding: 0;

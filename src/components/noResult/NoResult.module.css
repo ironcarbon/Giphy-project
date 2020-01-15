@@ -1,0 +1,28 @@
+.container img{
+    display: block;
+    margin: 0 auto;
+}
+
+.container p{
+    display: block;
+    text-align: center;
+    margin: 15px 0;
+}
+
+
+@media only screen and (min-width: 450px) and (max-width: 649px){
+    .container img{
+       width: 400px;
+    }
+}
+
+
+@media only screen and (min-width: 320px) and (max-width: 449px) {
+    .container img{
+        width: 240px;
+    }
+
+    .container p{
+       font-size: 15px;
+    }
+}

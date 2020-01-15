@@ -1,5 +1,7 @@
 import React, { Fragment } from 'react';
 import { withRouter } from 'react-router-dom';
+import styles from './SearchBar.module.css';
+import search from './search.png';
 
 class SearchBar extends React.Component {
     state = { searchedKeyword: "", error: "" };
@@ -11,14 +13,18 @@ class SearchBar extends React.Component {
     formHandler = (e) => {
         e.preventDefault();
         if (!this.state.searchedKeyword) {
-            this.setState({ error: 'Please search a gif' })
+            this.setState({
+                error: (<div className={styles.errorContainer}>< div className={styles.error}>
+                    <img src="https://media.giphy.com/media/1QGRJ9cOTbh5K/giphy.gif" />
+                </div><p>Please Search a Gif</p></div>)
+            })
         } else {
-            console.log(this.props.history.push({
+            this.props.history.push({
                 pathname: `/search/${this.state.searchedKeyword}`,
                 state: {
                     searchedKeyword: this.state.searchedKeyword
                 }
-            }))
+            })
         }
 
     }
@@ -27,10 +33,17 @@ class SearchBar extends React.Component {
 
             <Fragment>
                 {this.state.error ? <div>{this.state.error}</div> : ""}
-                <form onSubmit={this.formHandler}>
-                    <input type="text" onChange={this.inputHandler} placeholder='Search a Giph' />
-                    <input type="submit" value="Search" />
-                </form>
+                <div className={styles.container}>
+                    <form className={styles.form} onSubmit={this.formHandler}>
+                        <div className={styles.formContainer}>
+                            <input type="text" className={styles.search} onChange={this.inputHandler} placeholder='Search a Gif' required />
+                            {/* <button type="submit" className={styles.submit}> */}
+                            <img src={search} alt="search" className={styles.image} onClick={this.formHandler} />
+                            {/* </button> */}
+
+                        </div>
+                    </form>
+                </div>
             </Fragment>
         )
     }

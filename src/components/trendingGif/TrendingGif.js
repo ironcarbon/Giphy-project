@@ -26,8 +26,11 @@ class TrendingGif extends React.Component {
     }
     render() {
         return (
-            <div className={styles.wrapped}>
-                {!this.state.trendingGif && this.state.loading ? "Loading" : this.displayHandler()}
+            <div className={styles.mainContainer}>
+                <p>Trending Gifs</p>
+                <div className={styles.wrapped}>
+                    {!this.state.trendingGif && this.state.loading ? "Loading" : this.displayHandler()}
+                </div>
             </div>
         )
     }
